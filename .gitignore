@@ -1,0 +1,63 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build byproducts
+build
+/resources
+config.log
+package.txt
+dist.txt
+version.txt
+src/modules.cpp
+fah-work
+
+# generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# Compiled python
+*.pyc
+
+# Backup files
+*~
+
+# Scons
+.sconf_temp
+.sconsign.dblite
+
+# Misc
+config.xml
+data
+projects
+node_modules
+/log.txt
+/logs
+/*.pem
+/*.log
+/package-description.txt
+/*.bz2
+/*.gz
+/*.deb
+/*.rpm
