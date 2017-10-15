@@ -51,7 +51,7 @@ def main(argv=None):
     being run as a script. Otherwise, it's silent and just exposes methods.'''
     args = process_command_line(argv)
 
-    df = util.load_fish_dataframe(settings.DATA_FILE)
+    df = util.load_fish_dataframe(settings.DATA_PATH)
 
     oldest_datapoint = datetime.datetime.now() - datetime.timedelta(minutes=5)
     data = df[df['time'] > oldest_datapoint]
