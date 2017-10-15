@@ -2,14 +2,11 @@ import datetime
 import smtplib
 from email.mime.text import MIMEText
 
-import pandas as pd
+from fishtank import settings
+from fishtank.util import load_fish_dataframe
 
-df = pd.read_csv(
-    '/home/pi/fishdata.csv',
-    names=['time', 'temp', 'sensor'])
-df = df.dropna()
-df['time'] = pd.to_datetime(df['time'], unit='s')
-df['temp'] = (float(9)/5 * df['temp'])+32
+
+df = load_fish_dataframe(settings.DATA_PATH)
 
 day_ago = datetime.datetime.now() - datetime.timedelta(days=1)
 data = df[df['time'] > day_ago]
@@ -29,10 +26,10 @@ msg['To'] = 'Fish Czar'
 server = smtplib.SMTP('smtp.gmail.com:587')
 server.ehlo()
 server.starttls()
-server.login('justinrporter@gmail.com', 'fmdkamlidluqyuuu')
+server.login(settings.ADMIN, settings.EMAIL_SECRET_KEY)
 server.sendmail(
-    'justinrporter@gmail.com',
-    ['elizabeth.k.christiansen@gmail.com', 'justinrporter@gmail.com'],
+    settings.ADMIN,
+    settings.STEAKHOLDERS,
     msg.as_string())
 
 server.quit()
