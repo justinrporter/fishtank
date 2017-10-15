@@ -61,7 +61,7 @@ def main(argv=None):
     heater_on = modulate_heater(mean_temp, args.max_temp, args.min_temp)
 
     with open(settings.HEATER_STATUS_PATH, 'a') as f:
-        s = '%s,%s' % (datetime.now(), int(heater_on))
+        s = '%s,%s' % (datetime.datetime.now(), int(heater_on))
         f.write(s+'\n')
         print(s)
 
